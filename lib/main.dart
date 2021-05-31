@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import "package:budgeteer/screens/home/home.dart";
+import "package:budgeteer/screen_navigator.dart";
 
 void main() {
   runApp(MyApp());
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: ScreenNavigator(),
     );
   }
 }
