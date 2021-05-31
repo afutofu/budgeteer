@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317834286308",
+    "project_id": "budgeteer-f44f6",
+    "storage_bucket": "budgeteer-f44f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317834286308:android:5b3fba92aa56faa8bf08f1",
+        "android_client_info": {
+          "package_name": "com.afutofu.budgeteer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317834286308-13dn0jtff78vuopkci6vntmg6j4msbj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdaRQMHLX6tn3Id3wcpA76GjGuvPwHFdo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317834286308-13dn0jtff78vuopkci6vntmg6j4msbj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
