@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
-import "package:budgeteer/screens/home/home.dart";
+import "package:budgeteer/screens/home/home.screen.dart";
+import "package:budgeteer/screens/logs/logs.screen.dart";
+import "package:budgeteer/screens/settings/settings.screen.dart";
 
 class ScreenNavigator extends StatefulWidget {
   @override
@@ -10,9 +12,9 @@ class _ScreenNavigatorState extends State<ScreenNavigator> {
   int _currentScreenIndex = 1;
 
   final tabs = [
-    Center(child: Text("Logs")),
-    Home(),
-    Center(child: Text("Settings")),
+    LogsScreen(),
+    HomeScreen(),
+    SettingsScreen(),
   ];
 
   @override
