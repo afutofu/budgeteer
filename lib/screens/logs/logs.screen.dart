@@ -8,6 +8,24 @@ class LogsScreen extends StatelessWidget {
           title: Text("Logs"),
           backgroundColor: Colors.brown[300],
           centerTitle: true,
+          leading: Builder(builder: (context) {
+            return IconButton(
+              icon: Icon(Icons.hourglass_empty),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          }),
+        ),
+        drawer: Drawer(
+          child: Container(
+            child: Center(
+              child: Text(
+                "Sort by Time",
+                style: TextStyle(color: Colors.black, fontSize: 15),
+              ),
+            ),
+          ),
         ),
         body: Container(
           child: Center(child: Text("Logs")),
