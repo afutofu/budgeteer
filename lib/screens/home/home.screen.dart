@@ -1,3 +1,5 @@
+import 'package:budgeteer/screens/home/budget_drawer.dart';
+import 'package:budgeteer/screens/home/time_interval_drawer.dart';
 import "package:flutter/material.dart";
 
 class HomeScreen extends StatelessWidget {
@@ -31,26 +33,8 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      drawer: Drawer(
-        child: Container(
-          child: Center(
-            child: Text(
-              "Sort by Time",
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
-          ),
-        ),
-      ),
-      endDrawer: Drawer(
-        child: Container(
-          child: Center(
-            child: Text(
-              "Set budget / Add expenses / Add income",
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
-          ),
-        ),
-      ),
+      drawer: TimeIntervalDrawer(),
+      endDrawer: BudgetDrawer(),
       body: Container(
         child: Center(child: Text("Home")),
       ),
