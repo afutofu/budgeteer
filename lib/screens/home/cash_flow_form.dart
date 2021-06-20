@@ -1,5 +1,8 @@
-import 'package:budgeteer/shared/constants.dart';
 import "package:flutter/material.dart";
+import "package:shared_preferences/shared_preferences.dart";
+
+import 'package:budgeteer/shared/constants.dart';
+import 'package:budgeteer/models/cash_flow.dart';
 
 class CashFlowForm extends StatefulWidget {
   // If type is 0, add expenses
@@ -17,6 +20,28 @@ class _CalculatorState extends State<CashFlowForm> {
 
   // Form Values
   double _value;
+
+  // Save data to shared preferences
+  void saveData(value, type) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String cashFlowsString = prefs.getString("cashFlows");
+
+    CashFlow newCashFlow =
+        CashFlow(value: value, type: type, day: 1, month: 6, year: 2001);
+
+    if (cashFlowsString == null) {
+      final List<CashFlow> cashFlowsList = [newCashFlow];
+
+      final String encodedCashFlows = CashFlow.encode(cashFlowsList);
+      prefs.setString("cashFlows", encodedCashFlows);
+    } else {
+      final List<CashFlow> cashFlowsList = CashFlow.decode(cashFlowsString);
+      cashFlowsList.add(newCashFlow);
+
+      final String encodedCashFlows = CashFlow.encode(cashFlowsList);
+      prefs.setString("cashFlows", encodedCashFlows);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +62,11 @@ class _CalculatorState extends State<CashFlowForm> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.red)),
-                  onPressed: () {},
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      Navigator.pop(context);
+                    }
+                  },
                   child: Text("Add Expenses"))
             ],
           ));
@@ -58,7 +87,11 @@ class _CalculatorState extends State<CashFlowForm> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.green)),
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      Navigator.pop(context);
+                    }
+                  },
                   child: Text("Add Income"))
             ],
           ));
