@@ -50,6 +50,7 @@ class BudgetDrawer extends StatelessWidget {
                       minimumSize:
                           MaterialStateProperty.all<Size>(Size(150, 40))),
                   onPressed: () {
+                    Navigator.pop(context);
                     _showSettingsPanel(0);
                   },
                   child: Text("Add Expenses"),
@@ -64,6 +65,7 @@ class BudgetDrawer extends StatelessWidget {
                       minimumSize:
                           MaterialStateProperty.all<Size>(Size(150, 40))),
                   onPressed: () {
+                    Navigator.pop(context);
                     _showSettingsPanel(1);
                   },
                   child: Text("Add Income"),
