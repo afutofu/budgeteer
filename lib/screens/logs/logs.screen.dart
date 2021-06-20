@@ -1,3 +1,4 @@
+import 'package:budgeteer/screens/logs/log_list.dart';
 import "package:flutter/material.dart";
 
 class LogsScreen extends StatelessWidget {
@@ -28,7 +29,7 @@ class LogsScreen extends StatelessWidget {
           ),
         ),
         body: Container(
-          child: Center(child: Text("Logs")),
+          child: Center(child: LogList()),
         ));
   }
 }
