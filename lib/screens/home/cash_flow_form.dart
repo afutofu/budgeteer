@@ -22,19 +22,21 @@ class _CalculatorState extends State<CashFlowForm> {
   double _value;
 
   // Save data to shared preferences
-  void saveData(value, type) async {
+  Future saveData(value, type) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String cashFlowsString = prefs.getString("cashFlows");
 
     CashFlow newCashFlow =
         CashFlow(value: value, type: type, day: 1, month: 6, year: 2001);
 
+    // If there are no cash flows
     if (cashFlowsString == null) {
       final List<CashFlow> cashFlowsList = [newCashFlow];
 
       final String encodedCashFlows = CashFlow.encode(cashFlowsList);
       prefs.setString("cashFlows", encodedCashFlows);
     } else {
+      // If there are cash flows
       final List<CashFlow> cashFlowsList = CashFlow.decode(cashFlowsString);
       cashFlowsList.add(newCashFlow);
 
@@ -62,8 +64,9 @@ class _CalculatorState extends State<CashFlowForm> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.red)),
-                  onPressed: () async {
+                  onPressed: () {
                     if (_formKey.currentState.validate()) {
+                      saveData(_value, widget.type);
                       Navigator.pop(context);
                     }
                   },
@@ -89,6 +92,7 @@ class _CalculatorState extends State<CashFlowForm> {
                           MaterialStateProperty.all<Color>(Colors.green)),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
+                      saveData(_value, widget.type);
                       Navigator.pop(context);
                     }
                   },
